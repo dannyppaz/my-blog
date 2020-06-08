@@ -1,16 +1,7 @@
-import {
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER,
-} from "../actions/counterActions";
+import { increment, decrement } from "../actions/counterActions";
+import { createReducer } from "@reduxjs/toolkit";
 
-export const counterReducer = (state = { value: 0 }, action) => {
-  switch (action.type) {
-    case INCREMENT_COUNTER:
-      console.log("increment counter");
-      return { ...state, value: state.value + 1 };
-    case DECREMENT_COUNTER:
-      return { ...state, value: state.value - 1 };
-    default:
-      return { ...state };
-  }
-};
+export const counterReducer = createReducer(0, {
+  [increment.type]: (state) => state + 1,
+  [decrement.type]: (state) => state - 1,
+});

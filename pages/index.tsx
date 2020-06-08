@@ -7,27 +7,10 @@ import Date from "components/date";
 import { useDispatch, useSelector } from "react-redux";
 
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import {
-  INCREMENT_COUNTER,
-  DECREMENT_COUNTER,
-} from "../redux/actions/counterActions";
+import { increment, decrement } from "../redux/actions/counterActions";
 import { useCallback } from "react";
 
 export default function Home({ allPostsData }) {
-  const counter = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
-  const incrementCounter = useCallback(
-    () => dispatch({ type: INCREMENT_COUNTER }),
-    [dispatch]
-  );
-  const decrementCounter = useCallback(
-    () => dispatch({ type: DECREMENT_COUNTER }),
-    [dispatch]
-  );
-
-  console.log("counter ======= ", counter);
-
   return (
     <Layout home>
       <Head>
@@ -40,12 +23,7 @@ export default function Home({ allPostsData }) {
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
       </section>
-      <section>
-        <h1>Change the counter</h1>
-        <button onClick={incrementCounter}>Increment</button>
-        <button onClick={decrementCounter}>Decrement</button>
-        <p>Counter: {counter}</p>
-      </section>
+
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
