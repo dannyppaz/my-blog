@@ -1,3 +1,5 @@
+/* Here we use createReducer */
+
 import { increment, decrement } from "../actions/counterActions";
 import { createReducer } from "@reduxjs/toolkit";
 
